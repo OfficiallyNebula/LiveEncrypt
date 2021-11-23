@@ -28,6 +28,11 @@ namespace LiveEncrypt
             return Console.ReadLine();
         }
 
+        public void LineBreak()
+        {
+            Console.WriteLine("--------[Message Handler]--------");
+        }
+
         public void StreamWriter(string input)
         {
             string fileName = $"{System.Reflection.Assembly.GetEntryAssembly().GetName().Name}.neb";

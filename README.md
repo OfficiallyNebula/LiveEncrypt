@@ -30,6 +30,16 @@ Example:
  string example = MessageHandler.Input();
 ```
 
+Output line break:
+```
+- Call MessageHandler.LineBreak()
+Adds a line break which looks like: --------[Message Handler]--------
+```
+```csharp
+Example:
+ MessageHandler.LineBreak();
+```
+
 Output string to a file
 ```
 - Call MessageHandler.StreamWriter(string)
