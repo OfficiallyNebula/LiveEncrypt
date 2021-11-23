@@ -14,10 +14,9 @@ The Message takes inputs of: String, Int and Bool.
 String = Text you wish to output
 Int = Delay of the message sent in ms (Defaults to 0ms)
 Bool = Enable / Disable Debug messages (Default to false)
-
-Example:
 ```
 ```csharp
+Example:
  MessageHandler.Message("Hello World", 150, true);
 ```
 
@@ -25,10 +24,9 @@ Reading input from user:
 ```
 - Call MessageHandler.Input()
 Very simple replacement for Console.ReadLine();
-
-Example:
 ```
 ```csharp
+Example:
  string example = MessageHandler.Input();
 ```
 
@@ -39,10 +37,9 @@ This is an easier way to implement StreamWriter creation of files in your projec
 Your file name will be your project name.
 Your file extension will be ".neb"
 String = Which text you wish to save to a file
-
-Example:
 ```
 ```csharp
+Example:
  MessageHandler.StreamWriter("Hello World");
 ```
 
