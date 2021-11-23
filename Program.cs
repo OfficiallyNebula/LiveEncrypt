@@ -6,10 +6,12 @@ namespace LiveEncrypt
     class Program
     {
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Encryption encryption = new Encryption();
-            encryption.Encrypt("Hello");
+            /*encryption.Encrypt("Hello");*/
+
+            Console.WriteLine(encryption.CreateMD5("Hello"));
         }
 
     }
