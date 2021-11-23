@@ -9,9 +9,11 @@ namespace LiveEncrypt
         public static void Main(string[] args)
         {
             Encryption encryption = new Encryption();
-            /*encryption.Encrypt("Hello");*/
+            MessageHandler mh = new MessageHandler();
 
-            Console.WriteLine(encryption.CreateMD5("Hello"));
+            mh.Message("Please enter your desired string");
+            string input = mh.Input();
+            mh.Message(encryption.CreateMD5(input));
         }
 
     }

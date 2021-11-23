@@ -9,7 +9,7 @@ namespace LiveEncrypt
     {
         public void Encrypt(string input)
         {
-
+            MessageHandler mh = new MessageHandler();
             /*Take the input of "Buzz" and add foobar to every letter*/
             string key1 = "foo";
             string key2 = "bar";
@@ -30,16 +30,17 @@ namespace LiveEncrypt
                 try
                 {
                     string combine = key1 + c + key2;
-                    Console.WriteLine(combine);
-                    using (StreamWriter writer = new StreamWriter("Encryption.neb", append: true))
+                    mh.Message(combine.ToString(), 0, true);
+                    mh.StreamWriter(combine);
+/*                    using (StreamWriter writer = new StreamWriter("Encryption.neb", append: true))
                     {
                         writer.Write($"{combine.ToString().ToLower().Trim()}");
-                    }
+                    }*/
 
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine(@"Error within Try/Catch of Encryption");
+                    mh.Message(@"Error within Try/Catch of Encryption");
                     throw;
                 }
 
@@ -53,17 +54,19 @@ namespace LiveEncrypt
 
         public string CreateMD5(string input)
         {
+            MessageHandler mh = new MessageHandler();
             using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
             {
                 byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
                 byte[] hashBytes = md5.ComputeHash(inputBytes);
-
+                
                 // Convert the byte array to hexadecimal string
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < hashBytes.Length; i++)
                 {
                     sb.Append(hashBytes[i].ToString("X2"));
                 }
+                mh.StreamWriter(sb.ToString());
                 return sb.ToString();
             }
         }
