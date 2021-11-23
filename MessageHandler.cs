@@ -31,22 +31,6 @@ namespace LiveEncrypt
         public void StreamWriter(string input)
         {
             string fileName = $"{System.Reflection.Assembly.GetEntryAssembly().GetName().Name}.neb";
-
-            //Format Date to string and get rid of date to leave time. (HH is 24 hour, hh is 12 hour)
-            var timeString = DateTime.Now.ToString("HH:mm:ss");
-
-            using (StreamWriter writer = File.AppendText(fileName))
-            {
-                try
-                {
-                    writer.Write($"{timeString}");
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("[MH] >> ERROR EXCEPTION OCCURED DURING WRITING TO FILE");
-                    throw;
-                }
-            }
             using (StreamWriter writer = File.AppendText(fileName))
             {
                 try
@@ -59,18 +43,6 @@ namespace LiveEncrypt
                     throw;
                 }
                 
-            }
-            using (StreamWriter writer = File.AppendText(fileName))
-            {
-                try
-                {
-                    writer.WriteLine();
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("[MH] >> ERROR EXCEPTION OCCURED DURING WRITING TO FILE");
-                    throw;
-                }
             }
         }
     }
