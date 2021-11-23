@@ -7,9 +7,17 @@ Compile Program.cs in a console .net application and run in release.
 ## Usage
 ```
 - First run prompts user to set their Hash method
+```
+```
 - Takes user input (string)
+```
+```
 - Encrypts value using custom hash method selected
+```
+```
 - Stores file 'Encryption.neb' in project source location (This includes all encrypted strings, just delete the file or open file and remove anything you don't want stored locally)
+```
+```
 - Decryption happens when user is wanting to implement their string
 ```
 
