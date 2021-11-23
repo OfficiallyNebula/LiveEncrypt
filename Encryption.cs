@@ -17,12 +17,9 @@ namespace LiveEncrypt
             //Format Date to string and get rid of date to leave time. (HH is 24 hour, hh is 12 hour)
             var timeString = DateTime.Now.ToString("HH:mm:ss");
 
-            //Open file 'Encryption.neb' and add the current time to the line
-            using (StreamWriter writer = new StreamWriter("Encryption.neb", append: true))
-            {
+            //Open file and add the current time to the line
+            mh.StreamWriter(timeString);
 
-                writer.Write($"{timeString}");
-            }
             //For every character within the string, run this code
             foreach (char c in input.ToCharArray())
             {
@@ -32,10 +29,6 @@ namespace LiveEncrypt
                     string combine = key1 + c + key2;
                     mh.Message(combine.ToString(), 0, true);
                     mh.StreamWriter(combine);
-/*                    using (StreamWriter writer = new StreamWriter("Encryption.neb", append: true))
-                    {
-                        writer.Write($"{combine.ToString().ToLower().Trim()}");
-                    }*/
 
                 }
                 catch (Exception)
@@ -46,29 +39,32 @@ namespace LiveEncrypt
 
             }
             //Add new line ready for next input
-            using (StreamWriter writer = new StreamWriter("Encryption.neb", append: true))
-            {
-                writer.WriteLine();
-            }
+            mh.StreamWriter("\n");
         }
-
-        public string CreateMD5(string input)
-        {
-            MessageHandler mh = new MessageHandler();
-            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
+            public string CreateMD5(string input)
             {
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
-                
-                // Convert the byte array to hexadecimal string
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < hashBytes.Length; i++)
+                MessageHandler mh = new MessageHandler();
+                using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
                 {
-                    sb.Append(hashBytes[i].ToString("X2"));
-                }
+                    byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+                    byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                    // Convert the byte array to hexadecimal string
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < hashBytes.Length; i++)
+                    {
+                        sb.Append(hashBytes[i].ToString("X2"));
+                    }
+                    //Declare Variable to get the Date/Time of the machine, then format it to 24hour.
+                var timeString = DateTime.Now.ToString("HH:mm:ss");
+                //put current time into file
+                mh.StreamWriter(timeString);
+                //put hash into file
                 mh.StreamWriter(sb.ToString());
+                //enter new line into file ready for next input
+                mh.StreamWriter("\n");
                 return sb.ToString();
+                }
             }
         }
     }
-}
