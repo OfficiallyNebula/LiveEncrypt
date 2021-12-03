@@ -7,6 +7,7 @@ namespace LiveEncrypt
 {
     class Encryption
     {
+        //My version of obfuscation using strings
         public void Encrypt(string input)
         {
             MessageHandler mh = new MessageHandler();
@@ -27,13 +28,13 @@ namespace LiveEncrypt
                 try
                 {
                     string combine = key1 + c + key2;
-                    mh.Message(combine.ToString(), 0, true);
+                    mh.Message(combine.ToString(), 0);
                     mh.StreamWriter(combine);
 
                 }
                 catch (Exception)
                 {
-                    mh.Message(@"Error within Try/Catch of Encryption");
+                    mh.Message("Error within Try/Catch of Encryption in Encrypt", 0);
                     throw;
                 }
 
@@ -41,6 +42,8 @@ namespace LiveEncrypt
             //Add new line ready for next input
             mh.StreamWriter("\n");
         }
+
+        //Example usage: Encryption.CreateMD5("Hello");
             public string CreateMD5(string input)
             {
                 MessageHandler mh = new MessageHandler();
@@ -55,11 +58,6 @@ namespace LiveEncrypt
                     {
                         sb.Append(hashBytes[i].ToString("X2"));
                     }
-                    //Declare Variable to get the Date/Time of the machine, then format it to 24hour.
-                var timeString = DateTime.Now.ToString("HH:mm:ss");
-                //put current time into file
-                mh.StreamWriter(timeString);
-                //put hash into file
                 mh.StreamWriter(sb.ToString());
                 //enter new line into file ready for next input
                 mh.StreamWriter("\n");
