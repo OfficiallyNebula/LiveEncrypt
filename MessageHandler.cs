@@ -18,7 +18,7 @@ namespace LiveEncrypt
         {
             if (Debug == false)
                 Console.WriteLine($"[MH] >> {input}");
-                //Some stuff here to run whenever debug is not enabled (simple messaging)
+            //Some stuff here to run whenever debug is not enabled (simple messaging)
             else
                 Console.WriteLine($"DEBUG [MH] >> {input}");
 
@@ -42,6 +42,41 @@ namespace LiveEncrypt
         {
             Console.WriteLine("--------[Message Handler]--------");
         }
+
+
+
+// -------------------------------------[UDEMY COURSE EXAMPLES]------------------------------
+
+/*        //Foreach greet (Udemy course on Arrays)
+        public void Greet()
+        {
+            string[] friends = { "Network", "Wild", "Jelly", "Ryan" };
+            foreach (string friend in friends)
+            {
+                Console.WriteLine($"Hello! - {friend}");
+            }
+        }*/
+
+        //Example of 2D Array - To get Value "4" - Console.WriteLine("Middle value is: {0}"array2D[1,1]);
+        /*        int[,] array2D = new int[,]
+                {
+                    {0,1,2 },
+                    {3,4,5 },
+                    {6,7,8}
+                };*/
+
+        //Example of 3D Array - To get Value "7" - Console.WriteLine("Value 7 is: {0}"array3D[1,0,0]);
+/*        int[,,] array3D = new int[,,]
+        {
+            {
+                {1, 2, 3, },
+                {4, 5, 6, },
+            },
+            {
+                {7,8, 9, },
+                {10,11, 12, }
+            }
+        };*/
 
         //Example usage: MessageHandler.StreamWriter("Hello World");
         public void StreamWriter(string input)
