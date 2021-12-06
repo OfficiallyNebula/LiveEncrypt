@@ -28,13 +28,13 @@ namespace LiveEncrypt
                 try
                 {
                     string combine = key1 + c + key2;
-                    mh.Message(combine.ToString(), 0);
+                    mh.GetMessage(combine.ToString());
                     mh.StreamWriter(combine);
 
                 }
                 catch (Exception)
                 {
-                    mh.Message("Error within Try/Catch of Encryption in Encrypt", 0);
+                    mh.GetMessage("Error within Try/Catch of Encryption in Encrypt");
                     throw;
                 }
 

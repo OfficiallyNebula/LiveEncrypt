@@ -9,19 +9,12 @@ namespace LiveEncrypt
     //This means you can shorten a lot of commands by simply doing: mh.message();
     class MessageHandler
     {
-
-        private bool Debug = false;
-
-        public bool SetDebug(bool debug)
-        {
-            this.Debug = debug;
-            return this.Debug;
-        }
+        public bool Debug { get; set; }
 
 
         //Example usage: MessageHandler.Message("Hello World", 100, true);
         //Create method that takes a string input and has an optional delay to be passed debug mode is disabled by default - message handler will not handle debugs.
-        public void Message(string input, int delay = 0)
+        private void Message(string input, int delay = 0)
         {
             if (Debug == false)
                 Console.WriteLine($"[MH] >> {input}");
@@ -31,11 +24,18 @@ namespace LiveEncrypt
 
         }
 
+        //Get/set Message from Private Message method
+        public void GetMessage(string input, int delay = 0)
+        {
+            Message(input, delay);
+        }
+
         //Example usage: string input = MessageHandler.Input();
         public string Input()
         {
             return Console.ReadLine();
         }
+
 
         //Example usage: MessageHandler.LineBreak();
         public void LineBreak()
@@ -49,11 +49,11 @@ namespace LiveEncrypt
             string fileName = $"{System.Reflection.Assembly.GetEntryAssembly().GetName().Name}.neb";
             using (StreamWriter writer = File.AppendText(fileName))
             {
-                if (!this.Debug)
+                if (Debug == false)
                 {
                     try
                     {
-                            writer.Write(input.ToString());
+                        writer.Write(input.ToString());
                     }
                     catch (Exception e)
                     {
@@ -61,7 +61,7 @@ namespace LiveEncrypt
                         throw;
                     }
                 }
-                else
+                else if (Debug == true)
                 {
                     try
                     {
@@ -74,6 +74,7 @@ namespace LiveEncrypt
                         throw e;
                     }
                 }
+                else throw new Exception("Exception thrown in Streamwriter Debug mode");
                 
             }
         }
